@@ -1,0 +1,113 @@
+pass by value or reference in JAVA
+
+
+--In Java, all method arguments are passed by value. This means that when a method is called, the arguments are passed to the method as copies, rather than references to the original variables. This means that any changes made to the arguments within the method have no effect on the original variables.
+
+It's important to note that objects in Java are references and when you pass object to a method, you are passing the reference of the object, not the object itself. So the object can be modified by the method.
+
+
+--will the original values change if passed in a method
+
+If the variables are passed to a method as arguments and the values of the variables are swapped within the method, the original values will still change as the arguments are passed by value in Java.
+
+When you pass a variable as an argument to a method, the method is passed a copy of the variable's value, which it can then manipulate. However, the changes that are made to the argument within the method do not affect the original variable outside the method.
+
+If the method uses the variables and reassign the values inside of it, when the control goes back to the calling function the original variables will be updated with the new values. Because the variables passed as an argument are passed by value and are not connected to the original variables.
+
+```void swap(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int a = 1;
+    int b = 2;
+    swap(a,b);
+    System.out.println("a: " + a + " b: " + b); //a:1 b:2
+}```
+
+As you can see, after calling the method 'swap' original value of a and b remain unchanged. Because when the method 'swap' finished executing the changes made to the variables a, b inside the method doesn't affect the original variables outside the method.
+
+If you want to change the value of original variables inside a method, you can return the modified variables and assign it again to original variables or you can pass a reference of the original variables to the method.
+
+
+q.-->can you explain with code if we want to change the value of original variables inside a method
+
+Yes, there are a couple of ways to change the value of the original variables inside a method:
+
+1. Return the modified variables and assign them again to the original variables:
+```class Ideone
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+	int a = 1;
+    int b = 2;
+    int[] result = swap(a,b);
+    a = result[0];
+    b = result[1];
+    System.out.println("a: " + a + " b: " + b); //a:2 b:1
+	}
+	
+	static int[] swap(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+    return new int[]{a,b};
+}
+}```
+
+ so you are returning the modified variables as a result
+
+*********
+
+q:what are the references in the java
+In Java, a reference is a variable that holds the memory address of an object, rather than the object's actual value. This allows a program to manipulate the object through the reference.
+
+An object in Java is an instance of a class, and when you create an object, Java dynamically allocates memory for it on the heap. The reference variable holds the memory address of that object on the heap. So when you access the object through the reference variable, you are actually accessing the object stored in the memory at that address.
+
+Here is an example:
+```class MyClass {
+    int value;
+}
+
+MyClass obj1 = new MyClass();
+obj1.value = 5;
+
+MyClass obj2 = obj1;
+obj2.value = 10;
+
+System.out.println(obj1.value); // Output: 10
+```
+
+In this example, obj1 is a reference to an object of the class MyClass, and obj2 is a reference to the same object as obj1. The value of the value field in the object is modified through the reference obj2, and this change is reflected when accessing the object through the reference obj1.
+
+It's important to note that when you assign one reference variable to another, you are only creating a copy of the reference, not a new object. Both reference variables will point to the same object and changes to the object made through one reference will be visible through the other reference.
+
+*****Java uses references for all non-primitive data types. For example, arrays, classes, and interfaces. And when you pass objects, arrays as arguments in methods, you are passing references to them.*****
+
+*********
+
+q:what are primitive and non-primitive datatypes in java
+
+In Java, there are two types of data types: primitive and non-primitive.
+
+Primitive data types are the basic data types that are built into the language, such as int, double, char, boolean, etc. These data types are defined by the Java language itself and are not objects. They are stored on the stack and hold their actual value. Examples of primitive data types in Java include:
+
+int (integer)
+double (floating point number)
+boolean (true or false)
+char (a single character)
+byte (8-bit signed integer)
+short (16-bit signed integer)
+long (64-bit signed integer)
+float (32-bit floating point number)
+Non-primitive data types, on the other hand, are not built into the language. They are created by the programmer and are objects created from classes. These objects are stored on the heap and are accessed through references. Examples of non-primitive data types in Java include:
+
+String (a sequence of characters)
+Arrays (used to store multiple values of the same type)
+Classes (user-defined data types)
+Interfaces (defines a set of methods that a class must implement)
+Primitive data types have a fixed size in the memory. and generally have direct mapping to the underlying memory representation. They have predefined operations that can be perform on them, while non-primitive data types don't have fixed size and have only references to the objects in the heap and have more versatile operations as they are implemented by the user or provided by the library.
+
+
