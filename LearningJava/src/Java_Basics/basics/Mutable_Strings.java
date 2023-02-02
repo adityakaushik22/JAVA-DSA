@@ -1,4 +1,4 @@
-package Java_Basics;
+package Java_Basics.basics;
 
 public class Mutable_Strings {
     public static void main(String[] args) {

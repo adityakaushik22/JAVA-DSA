@@ -26,7 +26,12 @@ public class oops_intro {
         // copy constructor
         Student s3 = new Student(s2); // so it copies the values of passed argument
         System.out.println(s3.name+" "+ s3.marks+" "+s3.rno);
+
+        Student s4=new Student();
+        System.out.println(s4.name);
     }
+
+
 
 
 
@@ -46,9 +51,12 @@ class Student{
 
     // default constructor
     Student(){
-        this.rno=101;
-        this.name="aditya";
-        this.marks=99;
+//        this.rno=101;
+//        this.name="aditya";
+//        this.marks=99;
+
+        // passing constructor inside constructor using this
+        this(103,"rohan",78);
     }
     Student(int rno,String name,float marks){
         this.rno=rno;
