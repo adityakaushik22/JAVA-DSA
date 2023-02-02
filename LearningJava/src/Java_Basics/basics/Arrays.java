@@ -1,4 +1,4 @@
-package Java_Basics;
+package Java_Basics.basics;
 
 import java.util.Scanner;
 
@@ -42,5 +42,16 @@ public class Arrays {
             }
             System.out.println();
         }
+
+        // jagged array - if we dont want to specify the columns size in 2d array,,
+        // so in java we can skip providing the size for the columns for example
+        // arr= [[1,2],[3,4,5],[6,7,8]]
+        int arr3[][] = new int[3][];
+        arr3[0]=new int[2]; // arr3[0] = [ [ ...arr3[0]... ],[  ],[  ] ]
+        arr3[1]=new int[3];
+        arr3[2]=new int[3];
+
+        // 3d arrays
+        int arr4[][][] = new int[3][][];
     }
 }
